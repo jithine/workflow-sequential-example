@@ -16,6 +16,7 @@ jobs:
     B2:
         steps:
             - echo: echo test
+            - sleep: sleep 20
         requires: [A]
 
     # C will run after B
