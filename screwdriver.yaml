@@ -12,9 +12,14 @@ jobs:
         steps:
             - echo: echo test
         requires: [A]
+    # B will run after A
+    B2:
+        steps:
+            - echo: echo test
+        requires: [A]
 
     # C will run after B
     C:
         steps:
             - echo: echo test
-        requires: [B]
+        requires: [B, B2]
