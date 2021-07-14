@@ -1,21 +1,24 @@
 shared:
-    image: node:6
+    image: node:12
 
 jobs:
     A:
         steps:
             - echo: echo test
+            - meta: meta set build.version A
         requires: [~commit, ~pr]
 
     # B will run after A
     B:
         steps:
             - echo: echo test
+            - meta: meta get build.version
         requires: [A]
     # B will run after A
     B2:
         steps:
             - echo: echo test
+            - meta: meta set build.version
             - sleep: sleep 20
         requires: [A]
 
